@@ -1,0 +1,65 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <title>Web API</title>
+
+</head>
+<body>
+
+    <div class="container" style="padding-top:100px;">
+        <div class="row">
+            <div class="col-sm">
+                <h4>ТЗ</h4>
+                <p>
+                    Склад реализует овощи. Напишите web api для автоматизации заказов оптовых покупателей.
+                </p>
+                <p>
+                    Каждый покупатель получает уникальный токен для работы с api.
+                </p>
+                <p>
+                    Покупатель может получать список продуктов, цены, остатки на сладе. Может создавать, редактировать, отменять, получать список своих заказов.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <h4>Решение</h4>
+                <p>
+                    Решение разделено на 3 проекта: StoreAPI (ASP.NET Core), DataAccessLayer (Class Library), BusinessLayer (Class Library).
+                </p>
+                <ul>
+                    <li>
+                        DataAccessLayer содержит контекст и сущности БД.
+                    </li>
+                    <li>
+                        BusinessLayer содержит сервисы для получения, создания, изменения данных. Используются DTO. Валидация моделей находится в слое бизнес-логики (FluentValidation).
+                    </li>
+                    <li>
+                        Для идентификации написан специальный middleware. Реквест должен содержать в заголовке - "Authorization: Bearer {token}".
+                        В контроллерах доступ ограничивается при помощи атрибута авторизации.
+                    </li>
+                    <li>
+                        Для тестирования используется Swagger.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <a href="/swagger" target="_blank">Тестирование (Swagger)</a>
+            </div>            
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <a href="/swagger" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+</html>
